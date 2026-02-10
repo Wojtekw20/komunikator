@@ -31,5 +31,26 @@ $user = $_SESSION['user'];
 <input id="msg" placeholder="Napisz wiadomość...">
 <button onclick="send()">Wyślij</button>
 
+<script>
+    function fetchMessages() {
+        fetch("fetch.php")
+            .then(res => res.json())
+            .then(data => {
+                let chat = document.getElementById("chat");
+                chat.innerHTML = "";
+                data.forEach(m => {
+                    let div = document.createElement("div");
+                    div.className = "message " + (m.user === "<?= $user ?>" ? "my-message" : "other-message");
+                    div.innerHTML = "<b>" + m.user + ":</b> " + m.message + " <small>(" + m.time + ")</small>";
+                    chat.appendChild(div);
+                });
+                chat.scrollTop = chat.scrollHeight;
+            });
+    }
+
+    setInterval(fetchMessages, 1000);
+    fetchMessages();
+</script>
+
 </body>
 </html>
