@@ -50,7 +50,23 @@ $user = $_SESSION['user'];
 
     setInterval(fetchMessages, 1000);
     fetchMessages();
+
+    function send() {
+        let msg = document.getElementById("msg").value;
+        if(msg.trim() === "") return;
+
+        fetch("send.php", {
+            method: "POST",
+            headers: {'Content-Type':'application/x-www-form-urlencoded'},
+            body: "message=" + encodeURIComponent(msg)
+        }).then(() => {
+            document.getElementById("msg").value = "";
+            fetchMessages();
+        });
+    }
 </script>
+
+
 
 </body>
 </html>
