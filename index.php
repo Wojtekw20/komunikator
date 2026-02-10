@@ -10,11 +10,11 @@ $user = $_SESSION['user'];
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>PHP-only Komunikator</title>
+    <title>Komunikator</title>
 </head>
 <body>
 
-<h2>PHP-only Komunikator</h2>
+<h2>Komunikator</h2>
 <p>Jesteś: <b><?= $user ?></b></p>
 
 </body>
