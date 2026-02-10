@@ -10,12 +10,26 @@ $user = $_SESSION['user'];
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>PHP-only Komunikator</title>
+    <title> Komunikator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #chat { border:1px solid #666; padding:10px; width:500px; height:300px; overflow:auto; margin-bottom:10px; }
+        #msg { width:400px; }
+        button { padding:5px 10px; }
+        .message { margin:3px 0; }
+        .my-message { color: blue; }
+        .other-message { color: green; }
+    </style>
 </head>
 <body>
 
-<h2>PHP-only Komunikator</h2>
+<h2>Komunikator</h2>
 <p>Jesteś: <b><?= $user ?></b></p>
+
+<div id="chat"></div>
+
+<input id="msg" placeholder="Napisz wiadomość...">
+<button onclick="send()">Wyślij</button>
 
 </body>
 </html>
